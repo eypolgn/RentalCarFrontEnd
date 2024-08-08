@@ -40,17 +40,17 @@
           password: '',
           email: ''
         },
-        showAddUserForm: false // Formun görünürlüğünü kontrol etmek için
+        showAddUserForm: false
       };
     },
     mounted() {
-      this.fetchUsers(); // Uygulama ilk yüklendiğinde kullanıcıları çek
+      this.fetchUsers();
     },
     methods: {
       fetchUsers() {
-        axios.get('/api/users') // Kullanıcıları çekmek için GET isteği
+        axios.get('/api/users') 
           .then(response => {
-            this.users = response.data; // Kullanıcıları al
+            this.users = response.data;
           })
           .catch(error => {
             console.error('Kullanıcılar alınırken hata oluştu:', error);
@@ -64,9 +64,9 @@
         })
         .then(response => {
           console.log('Kullanıcı eklendi:', response.data);
-          this.users.push(response.data); // Yeni kullanıcıyı listeye ekle
-          this.newUser = { name: '', email: '', password: '' }; // Formu sıfırla
-          this.showAddUserForm = false; // Formu kapat
+          this.users.push(response.data); 
+          this.newUser = { name: '', email: '', password: '' };
+          this.showAddUserForm = false; 
         })
         .catch(error => {
           console.error('Kullanıcı eklenirken hata oluştu:', error);

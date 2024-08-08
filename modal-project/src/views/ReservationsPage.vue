@@ -44,24 +44,24 @@ export default {
   name: "ReservationsPage",
   data() {
     return {
-      reservations: [], // Rezervasyonları saklayacak dizi
+      reservations: [],
       newReservation: {
         userId: '',
         carId: '',
         startDate: '',
         endDate: ''
       },
-      showAddReservationForm: false, // Formun görünürlüğünü kontrol etmek için
+      showAddReservationForm: false,
     };
   },
   mounted() {
-    this.fetchReservations(); // Sayfa yüklendiğinde rezervasyonları çek
+    this.fetchReservations();
   },
   methods: {
     fetchReservations() {
-      axios.get('/api/reservations') // Tüm rezervasyonları çekmek için API isteği
+      axios.get('/api/reservations')
         .then(response => {
-          this.reservations = response.data; // Rezervasyonları güncelle
+          this.reservations = response.data;
         })
         .catch(error => {
           console.error('Rezervasyonlar alınırken hata oluştu:', error);
@@ -70,12 +70,12 @@ export default {
     addReservation() {
       console.log("sdasdad")
       console.log(this.newReservation)
-      axios.post('/api/reservations', this.newReservation) // Yeni rezervasyonu eklemek için API isteği
+      axios.post('/api/reservations', this.newReservation)
         .then(response => {
           console.log('Rezervasyon eklendi:', response.data);
-          this.reservations.push(response.data); // Yeni rezervasyonu listeye ekle
-          this.newReservation = { userId: '', carId: '', startDate: '', endDate: '' }; // Formu sıfırla
-          this.showAddReservationForm = false; // Formu kapat
+          this.reservations.push(response.data);
+          this.newReservation = { userId: '', carId: '', startDate: '', endDate: '' };
+          this.showAddReservationForm = false;
         })
         .catch(error => {
           console.error('Rezervasyon eklenirken hata oluştu:', error);
@@ -84,10 +84,10 @@ export default {
     removeReservation() {
       const reservationId = prompt("Silmek istediğiniz rezervasyonun ID'sini girin:");
       if (reservationId) {
-        axios.delete(`/api/reservations/${reservationId}`) // Rezervasyonu silmek için API isteği
+        axios.delete(`/api/reservations/${reservationId}`)
           .then(response => {
             console.log('Rezervasyon silindi:', response.data);
-            this.reservations = this.reservations.filter(reservation => reservation.id !== parseInt(reservationId)); // Listeyi güncelle
+            this.reservations = this.reservations.filter(reservation => reservation.id !== parseInt(reservationId));
           })
           .catch(error => {
             console.error('Rezervasyon silinirken hata oluştu:', error);
@@ -99,7 +99,7 @@ export default {
 </script>
   
 <style scoped>
-/* CSS stilleri */
+
 h1 {
   color: #2c3e50;
   text-align: center;
@@ -131,14 +131,14 @@ h2 {
 }
 .reservation-list {
   margin-top: 20px;
-  list-style-type: none; /* Madde işaretlerini kaldır */
-  padding: 0; /* İç boşluk kaldır */
+  list-style-type: none; 
+  padding: 0; 
 }
 .reservation-item {
   background-color: #f9f9f9;
-  border: 1px solid #ddd; /* Kenarlık */
-  border-radius: 5px; /* Kenarları yuvarla */
-  padding: 10px; /* İç boşluk */
-  margin-bottom: 10px; /* Alt boşluk */
+  border: 1px solid #ddd; 
+  border-radius: 5px;
+  padding: 10px; 
+  margin-bottom: 10px; 
 }
 </style>

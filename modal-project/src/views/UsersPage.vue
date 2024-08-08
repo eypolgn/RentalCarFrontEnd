@@ -45,17 +45,17 @@
           email: '',
           id: null
         },
-        showAddUserForm: false // Formun görünürlüğünü kontrol etmek için
+        showAddUserForm: false
       };
     },
     mounted() {
-      this.fetchUsers(); // Uygulama ilk yüklendiğinde kullanıcıları çek
+      this.fetchUsers();
     },
     methods: {
       fetchUsers() {
-        axios.get('/api/users') // Kullanıcıları çekmek için GET isteği
+        axios.get('/api/users')
           .then(response => {
-            this.users = response.data; // Kullanıcıları al
+            this.users = response.data;
           })
           .catch(error => {
             console.error('Kullanıcılar alınırken hata oluştu:', error);
@@ -69,9 +69,9 @@
         })
         .then(response => {
           console.log('Kullanıcı eklendi:', response.data);
-          this.users.push(response.data); // Yeni kullanıcıyı listeye ekle
-          this.newUser = { name: '', email: '', password: '' }; // Formu sıfırla
-          this.showAddUserForm = false; // Formu kapat
+          this.users.push(response.data);
+          this.newUser = { name: '', email: '', password: '' };
+          this.showAddUserForm = false; 
         })
         .catch(error => {
           console.error('Kullanıcı eklenirken hata oluştu:', error);
@@ -80,10 +80,10 @@
       removeUser() {
         const userId = prompt("Silmek istediğiniz kullanıcının id numarasını girin:");
         if (userId) {
-          axios.delete(`/api/users/${userId}`) // userId değişkenini burada kullanıyoruz
+          axios.delete(`/api/users/${userId}`)
             .then(response => {
               console.log('Kullanıcı silindi:', response.data);
-              this.users = this.users.filter(user => user.id !== parseInt(userId)); // Listeyi güncelle
+              this.users = this.users.filter(user => user.id !== parseInt(userId));
             })
             .catch(error => {
               console.error('Kullanıcı silinirken hata oluştu!', error);
@@ -95,7 +95,6 @@
   </script>
   
   <style scoped>
-  /* Genel stiller */
   h1 {
     color: #2c3e50;
     text-align: center;
@@ -104,7 +103,6 @@
     color: #2c3e50;
   }
   
-  /* Buton stilleri */
   .button-style {
     background-color: #4CAF50;
     color: white;
@@ -125,7 +123,6 @@
     border: 2px solid #4CAF50;
   }
   
-  /* Form stilleri */
   .add-user-form {
     margin-top: 20px;
   }

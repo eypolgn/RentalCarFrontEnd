@@ -17,23 +17,23 @@ export default {
 
 <style>
 nav {
-  display: flex; /* Flexbox kullanarak bağlantıları yan yana yerleştir */
-  gap: 30px; /* Bağlantılar arasında boşluk bırak */
+  display: flex;
+  gap: 30px;
 }
 
 .nav-link {
-  text-decoration: none; /* Alt çizgiyi kaldır */
-  color: white; /* Metin rengi */
-  background-color: #a72b2b; /* Buton arka plan rengi */
-  padding: 2px 5px; /* İç boşluk ekle */
-  border: none; /* Kenar boşluğu oluşturma */
+  text-decoration: none;
+  color: white;
+  background-color: #a72b2b;
+  padding: 2px 5px;
+  border: none;
   
-  transition: background-color 0.3s, transform 0.2s; /* Geçiş animasyonu ekle */
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .nav-link:hover {
-  background-color: black; /* Fare üzerine geldiğinde arka plan rengi */
-  transform: scale(1.05); /* Fare üzerine gelince büyütme efekti */
+  background-color: black;
+  transform: scale(1.05);
 }
 </style>
 

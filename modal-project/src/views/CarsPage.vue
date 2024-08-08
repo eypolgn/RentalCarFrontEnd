@@ -43,25 +43,25 @@
     name: 'CarsPage',
     data() {
       return {
-        cars: [], // Araçları saklayacak dizi
-        newCar: { // Yeni araç bilgilerini tutacak nesne
+        cars: [],
+        newCar: { 
           brand: '',
           model: '',
           licensePlate: '',
           pricePerDay: null
         },
-        showAddCarForm: false // Formun görünürlüğünü kontrol etmek için
+        showAddCarForm: false 
       };
     },
     mounted() {
-      this.fetchCars(); // Uygulama ilk yüklendiğinde araçları çek
+      this.fetchCars();
     },
     methods: {
       fetchCars() {
         axios.get('/api/cars')
           .then(response => {
             console.log(response.data);
-            this.cars = response.data; // Veriyi cars dizisine atayın
+            this.cars = response.data;
           })
           .catch(error => {
             console.error('There was an error!', error);
@@ -71,9 +71,9 @@
         axios.post('/api/cars', this.newCar)
           .then(response => {
             console.log('Araç eklendi:', response.data);
-            this.cars.push(response.data); // Yeni aracı listeye ekle
-            this.newCar = { brand: '', model: '', licensePlate: '', pricePerDay: null }; // Formu sıfırla
-            this.showAddCarForm = false; // Formu kapat
+            this.cars.push(response.data); 
+            this.newCar = { brand: '', model: '', licensePlate: '', pricePerDay: null }; 
+            this.showAddCarForm = false; 
           })
           .catch(error => {
             console.error('Araç eklenirken hata oluştu!', error);
@@ -85,7 +85,7 @@
           axios.delete(`/api/cars/${licensePlateToRemove}`)
             .then(response => {
               console.log('Araç silindi:', response.data);
-              this.cars = this.cars.filter(car => car.licensePlate !== licensePlateToRemove); // Listeyi güncelle
+              this.cars = this.cars.filter(car => car.licensePlate !== licensePlateToRemove); 
             })
             .catch(error => {
               console.error('Araç silinirken hata oluştu!', error);
@@ -97,7 +97,6 @@
   </script>
   
   <style scoped>
-  /* Genel stiller */
   h1 {
     color: #2c3e50;
     text-align: center;
@@ -107,29 +106,28 @@
     color: #2c3e50;
   }
   
-  /* Buton stilleri */
   .button-style {
-    background-color: #4CAF50; /* Buton rengi yeşil */
-    color: white; /* Metin rengi beyaz */
-    border: none; /* Kenar yok */
-    padding: 10px 20px; /* İç boşluk */
-    text-align: center; /* Metni ortala */
-    text-decoration: none; /* Alt çizgi yok */
-    display: inline-block; /* Blok içinde satır içi */
-    font-size: 16px; /* Yazı boyutu */
-    margin: 10px 5px; /* Dış boşluk */
-    cursor: pointer; /* İmleç işareti */
-    transition: background-color 0.3s, transform 0.3s; /* Geçiş efektleri */
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 10px 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s;
   }
   
   .button-style:hover {
-    background-color: #ffffff; /* Üzerine gelindiğinde arka plan beyaz */
-    color: #4CAF50; /* Metin rengi yeşil */
-    transform: scale(1.05); /* Hafif büyütme efekti */
+    background-color: #ffffff;
+    color: #4CAF50; 
+    transform: scale(1.05); 
     border: 2px solid #4CAF50;
   }
   
-  /* Form stilleri */
+
   .add-car-form {
     margin: 20px 0;
     padding: 20px;
@@ -159,10 +157,9 @@
   }
   
   .add-car-form button:hover {
-    background-color: #45a049; /* Üzerine gelindiğinde yeşil tonunda değişim */
+    background-color: #45a049; 
   }
   
-  /* Araç listesi stilleri */
   .car-list {
     list-style-type: none; 
     margin-top: 20px;
